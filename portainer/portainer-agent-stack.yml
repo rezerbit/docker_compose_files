@@ -35,6 +35,8 @@ services:
 networks:
   agent_network:
     driver: overlay
+  nginx-front:
+    external: true
 
 volumes:
   portainer_data:
