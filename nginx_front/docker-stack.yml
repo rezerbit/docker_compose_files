@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-  nginx-front:
+  nginx:
     image: nginx
     ports:
       - 80:80
@@ -32,3 +32,4 @@ networks:
   default:
     external:
       name: nginx-front
+    driver: overlay
