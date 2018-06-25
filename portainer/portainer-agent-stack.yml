@@ -7,7 +7,7 @@ services:
       # REQUIRED: Should be equal to the service name prefixed by "tasks." when
       # deployed inside an overlay network
       AGENT_CLUSTER_ADDR: tasks.agent
-      AGENT_PORT: 9051
+      AGENT_PORT: 9001
       # LOG_LEVEL: debug
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -18,13 +18,14 @@ services:
 
   portainer:
     image: portainer/portainer
-    command: -H tcp://tasks.agent:9051 #--tlsskipverify #--templates $TEMPLATES_URL
+    command: -H tcp://tasks.agent:9001 --tlsskipverify #--templates $TEMPLATES_URL
     ports:
-      - 9050:9000
+      - 9000
     volumes:
       - portainer_data:/data
     networks:
       - agent_network
+      - nginx-front
     deploy:
       mode: replicated
       replicas: 1
