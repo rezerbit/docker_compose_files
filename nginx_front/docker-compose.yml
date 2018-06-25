@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  nginx-front:
+    image: nginx
+    container_name: nginx-front
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+      - 5000:5000
+    volumes:
+      - /var/log/nginx:/var/log/nginx:rw
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - /etc/nginx/conf.d:/etc/nginx/conf.d:ro
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - /usr/share/nginx/html:/usr/share/nginx/html
+    logging:
+      options:
+        max-size: ${NGINX_FRONT_LOG_MAX_SIZE:-4m}
+        max-file: ${NGINX_FRONT_LOG_MAX_FILE:-10}
+
+# Do not forget to 'docker network create nginx-front' before launch,
+# and to add '--network nginx-front' to proxied containers.
+networks:
+  default:
+    external:
+      name: nginx-front

@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  volumerize:
+    image: blacklabelops/volumerize
+    container_name: volumerize
+    volumes:
+      - cache:/volumerize-cache
+      - senkova_db-data:/source/senkova_db-data:ro
+    env_file: .env
+
+volumes:
+  cache:
+  senkova_db-data:
+    external: true

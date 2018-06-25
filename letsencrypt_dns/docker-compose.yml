@@ -1,0 +1,11 @@
+version: "2"
+
+services:
+  letsencrypt-dns:
+    image: adferrand/letsencrypt-dns
+    container_name: letsencrypt-dns
+    restart: always
+    volumes:
+      - /etc/letsencrypt/domains.conf:/etc/letsencrypt/domains.conf
+      - /etc/letsencrypt:/etc/letsencrypt
+    env_file: .env
