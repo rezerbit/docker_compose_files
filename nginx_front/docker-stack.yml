@@ -3,8 +3,6 @@ version: "3"
 services:
   nginx-front:
     image: nginx
-    container_name: nginx-front
-    restart: always
     ports:
       - 80:80
       - 443:443
@@ -19,6 +17,14 @@ services:
       options:
         max-size: ${NGINX_FRONT_LOG_MAX_SIZE:-4m}
         max-file: ${NGINX_FRONT_LOG_MAX_FILE:-10}
+    deploy:
+      replicas: 1
+      update_config:
+        delay: 5s
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints: [node.role == manager]
 
 # Do not forget to 'docker network create -d overlay nginx-front' before launch,
 # and to add '--network nginx-front' to proxied containers.
