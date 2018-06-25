@@ -18,6 +18,8 @@ services:
 
   portainer:
     image: portainer/portainer
+    depends_on:
+      - agent
     command: -H tcp://tasks.agent:9001 --tlsskipverify #--templates $TEMPLATES_URL
     ports:
       - 9000
