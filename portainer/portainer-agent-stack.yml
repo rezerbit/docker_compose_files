@@ -20,7 +20,7 @@ services:
     image: portainer/portainer
     depends_on:
       - agent
-    command: -H tcp://tasks.agent:9001 --templates $TEMPLATES_URL --admin-password $ADMIN_PASSWORD
+    command: -H tcp://tasks.agent:9001 --templates $TEMPLATES_URL
     ports:
       - 9000
     volumes:
