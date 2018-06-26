@@ -8,17 +8,8 @@
     "platform": "linux",
     "logo": "",
     "repository": {
-      "url": "https://github.com/portainer/templates",
-      "stackfile": "stacks/cockroachdb/docker-stack.yml"
-    },
-    "env":
+      "url": "https://github.com/rezerbit/docker_compose_files/tree/master/portainer/templates",
+      "stackfile": "stacks/registry/stack.yml"
+    }
   }
 ]
-
-docker service create \
---name portainer \
---publish 9050:9050 \
---replicas=1 \
---constraint 'node.role == manager' \
---mount type=bind,src=//path/on/host/data,dst=/data \
-portainer/portainer
