@@ -1,24 +1,27 @@
-version: '3'
-
+version: '2'
 services:
-  reg-srv:
-    image: registry:latest
+  registry:
+    image: registry
+    restart: always
     ports:
       - 5000:5000
-    networks:
-      reg-net:
-        aliases:
-          - reg-serv
-  reg-web:
-    image: hyper/docker-registry-web
-    ports:
-      - 8080
+    env_file: .env
     environment:
-      - REGISTRY_URL=http://reg-serv:5000/v2
-      - REGISTRY_NAME=localhost:5000
-    networks:
-      - reg-net
+      TCP_PORTS: '5000'
+      VIRTUAL_HOST: '*:5000, https://*:5000'
+      FORCE_SSL: 'true'
+      REGISTRY_STORAGE_DELETE_ENABLED: 'true'
+    volumes:
+      - ~/htpasswd_backup:/httpasswd_storage
 
-networks:
-  reg-net:
-    driver: overlay
+  registry-ui:
+    image: konradkleine/docker-registry-frontend:v2
+    restart: always
+    environment:
+      VIRTUAL_HOST: '*, https://*'
+      ENV_DOCKER_REGISTRY_HOST: 'registry'
+      ENV_DOCKER_REGISTRY_PORT: 5000
+    links:
+      - registry
+    expose:
+      - 80

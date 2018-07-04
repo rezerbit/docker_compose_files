@@ -1,0 +1,52 @@
+version: 0.1
+log:
+  accesslog:
+    disabled: true
+  level: info
+  formatter: text
+#  hooks:
+#    - type: mail
+#      disabled: true
+#      levels:
+#        - panic
+#      options:
+#        smtp:
+#          addr: mail.example.com:25
+#          username: mailuser
+#          password: password
+#          insecure: true
+#        from: registry@rezerbit.com
+#        to:
+#          - rezerbit@gmail.com
+loglevel: info
+storage:
+  s3:
+    accesskey: 19449fd7e6ff
+    secretkey: 002f20dbfe13c1f816d3746a4aa23b062f0e18df94
+    region: us-east-1
+    bucket: registry-rezerbit
+auth:
+  htpasswd:
+    realm: basic-realm
+    path: /httpasswd_storage
+http:
+  addr: localhost:5000
+#  prefix: /my/nested/registry/
+#  host: https://myregistryaddress.org:5000
+#  secret: asecretforlocaldevelopment
+#  relativeurls: false
+#  tls:
+#    certificate: /path/to/x509/public
+#    key: /path/to/x509/private
+#    clientcas:
+#      - /path/to/ca.pem
+#      - /path/to/another/ca.pem
+#    letsencrypt:
+#      cachefile: /path/to/cache-file
+#      email: emailused@letsencrypt.com
+#  debug:
+#    addr: localhost:5001
+#  headers:
+#    X-Content-Type-Options: [nosniff]
+#  http2:
+#    disabled: false
