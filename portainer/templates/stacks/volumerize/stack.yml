@@ -8,6 +8,10 @@ services:
       - cache:/volumerize-cache
       - virtsoil_db-data:/source/virtsoil_db-data:ro
     env_file: .env
+    deploy:
+      mode: global
+      update_config:
+        delay: 5s
 
 volumes:
   cache:

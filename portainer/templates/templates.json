@@ -2,7 +2,7 @@
   {
     "type": "stack",
     "title": "Registry",
-    "description": "Docker image registry",
+    "description": "Docker image registry.",
     "note": "",
     "categories": ["docker"],
     "platform": "linux",
@@ -15,7 +15,7 @@
   {
     "type": "stack",
     "title": "Volumerize",
-    "description": "Backup and restore solution for Docker volume backups",
+    "description": "Backup and restore solution for Docker volume backups.",
     "note": "",
     "categories": ["backup"],
     "platform": "linux",
@@ -23,6 +23,19 @@
     "repository": {
       "url": "https://github.com/rezerbit/docker_compose_files",
       "stackfile": "portainer/templates/stacks/volumerize/stack.yml"
+    }
+  },
+  {
+    "type": "stack",
+    "title": "Let`s Encrypt DNS",
+    "description": "This Docker container is designed to manage Let's Encrypt SSL certificates based on DNS challenges.",
+    "note": "",
+    "categories": ["HTTPS"],
+    "platform": "linux",
+    "logo": "https://raw.githubusercontent.com/adferrand/docker-letsencrypt-dns/master/images/logo_from_realies_200px.png",
+    "repository": {
+      "url": "https://github.com/rezerbit/docker_compose_files",
+      "stackfile": "portainer/templates/stacks/letsencrypt_dns/stack.yml"
     }
   }
 ]
