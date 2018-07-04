@@ -2,13 +2,13 @@
   {
     "type": "stack",
     "title": "Registry",
-    "description": "Registry",
+    "description": "Docker image registry",
     "note": "",
     "categories": ["docker"],
     "platform": "linux",
-    "logo": "",
+    "logo": "https://portainer.io/images/logos/registry.png",
     "repository": {
-      "url": "https://github.com/rezerbit/docker_compose_files.git",
+      "url": "https://github.com/rezerbit/docker_compose_files",
       "stackfile": "portainer/templates/stacks/registry/stack.yml"
     }
   }
