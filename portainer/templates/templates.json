@@ -11,5 +11,18 @@
       "url": "https://github.com/rezerbit/docker_compose_files",
       "stackfile": "portainer/templates/stacks/registry/stack.yml"
     }
+  },
+  {
+    "type": "stack",
+    "title": "Volumerize",
+    "description": "Backup and restore solution for Docker volume backups",
+    "note": "",
+    "categories": ["backup"],
+    "platform": "linux",
+    "logo": "",
+    "repository": {
+      "url": "https://github.com/rezerbit/docker_compose_files",
+      "stackfile": "portainer/templates/stacks/volumerize/stack.yml"
+    }
   }
 ]

@@ -6,10 +6,10 @@ services:
     container_name: volumerize
     volumes:
       - cache:/volumerize-cache
-      - senkova_db-data:/source/senkova_db-data:ro
+      - virtsoil_db-data:/source/virtsoil_db-data:ro
     env_file: .env
 
 volumes:
   cache:
-  senkova_db-data:
+  virtsoil_db-data:
     external: true
