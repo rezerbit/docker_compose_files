@@ -25,3 +25,9 @@ services:
       - registry
     expose:
       - 80
+    networks:
+      - nginx-front
+
+networks:
+  nginx-front:
+    external: true
