@@ -8,7 +8,7 @@
     "platform": "linux",
     "logo": "",
     "repository": {
-      "url": "https://github.com/rezerbit/docker_compose_files",
+      "url": "https://github.com/rezerbit/docker_compose_files/tree/master/",
       "stackfile": "portainer/templates/stacks/registry/stack.yml"
     }
   }
