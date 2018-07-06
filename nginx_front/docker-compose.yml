@@ -19,6 +19,13 @@ services:
       options:
         max-size: ${NGINX_FRONT_LOG_MAX_SIZE:-4m}
         max-file: ${NGINX_FRONT_LOG_MAX_FILE:-10}
+    deploy:
+      mode: replicated
+      replicas: 2
+      update_config:
+        delay: 5s
+      placement:
+        constraints: [node.role == manager]
 
 # Do not forget to 'docker network create -d overlay nginx-front' before launch,
 # and to add '--network nginx-front' to proxied containers.
