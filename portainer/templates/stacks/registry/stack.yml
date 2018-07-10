@@ -12,7 +12,7 @@ services:
       FORCE_SSL: 'true'
       REGISTRY_STORAGE_DELETE_ENABLED: 'true'
     volumes:
-      - ~/htpasswd_backup:/httpasswd_storage
+      - /etc/nginx/httpasswd_storage/.htpasswd:/httpasswd_storage/.hthtpasswd
 
   registry-ui:
     image: konradkleine/docker-registry-frontend:v2
