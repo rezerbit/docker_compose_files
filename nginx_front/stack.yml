@@ -11,6 +11,7 @@ services:
       - ./nginx.conf:/etc/nginx/nginx.conf
       - /etc/nginx/conf.d:/etc/nginx/conf.d:ro
       - /etc/nginx/httpasswd_storage:/etc/nginx/httpasswd_storage:ro
+      - /etc/nginx/ssl:/etc/nginx/ssl:ro
       - /etc/letsencrypt:/etc/letsencrypt:ro
       - /usr/share/nginx/html:/usr/share/nginx/html
     logging:
