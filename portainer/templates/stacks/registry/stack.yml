@@ -11,6 +11,8 @@ services:
       REGISTRY_STORAGE_DELETE_ENABLED: 'true'
     volumes:
       - /etc/nginx/httpasswd_storage/.htpasswd:/httpasswd_storage/.hthtpasswd
+    networks:
+      - nginx-front
 
   registry-ui:
     image: konradkleine/docker-registry-frontend:v2
