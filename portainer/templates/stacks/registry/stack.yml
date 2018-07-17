@@ -7,7 +7,8 @@ services:
     environment:
       REGISTRY_STORAGE_DELETE_ENABLED: 'true'
     volumes:
-      - /etc/nginx/httpasswd_storage/.htpasswd:/httpasswd_storage/.hthtpasswd
+      - /etc/nginx/httpasswd_storage/.htpasswd:/httpasswd_storage/.hthtpasswd:ro
+      - /etc/letsencrypt/live/rezerbit.com:/etc/letsencrypt/live/rezerbit.com:ro
     networks:
       - nginx-front
 
