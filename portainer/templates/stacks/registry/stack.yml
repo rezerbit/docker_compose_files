@@ -3,11 +3,13 @@ services:
   registry:
     image: registry
     restart: always
+    ports:
+      - 5000:5000
     env_file: .env
     environment:
       REGISTRY_STORAGE_DELETE_ENABLED: 'true'
     volumes:
-      - ./config.yml:/config.yml
+      - ./config.yml:/etc/docker/registry/config.yml
       - /etc/nginx/htpasswd_storage/.htpasswd:/htpasswd_storage/.htpasswd:ro
       - /etc/letsencrypt/live/rezerbit.com/:/etc/letsencrypt/live/rezerbit.com/:ro
     networks:
