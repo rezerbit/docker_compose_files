@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  minio:
+    image: minio/minio
+    restart: always
+    command: "gateway b2"
+    env_file: .env
+    environment:
+      - MINIO_ACCESS_KEY
+      - MINIO_SECRET_KEY
+    volumes:
+      - minio2-data:/export
+    networks:
+      - nginx-front
+    deploy:
+      replicas: 1
+      update_config:
+        delay: 5s
+      restart_policy:
+        delay: 10s
+        max_attempts: 10
+        window: 60s
+      placement:
+        constraints: [node.role == manager]
+
+networks:
+  nginx-front:
+    external: true
