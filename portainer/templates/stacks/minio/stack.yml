@@ -10,7 +10,7 @@ services:
       - MINIO_ACCESS_KEY
       - MINIO_SECRET_KEY
     volumes:
-      - minio2-data:/export
+      - minio-data:/export
     networks:
       - nginx-front
     deploy:
@@ -23,6 +23,8 @@ services:
         window: 60s
       placement:
         constraints: [node.role == manager]
+volumes:
+  minio-data:
 
 networks:
   nginx-front:
