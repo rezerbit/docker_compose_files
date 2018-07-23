@@ -15,12 +15,8 @@ services:
       - nginx-front
     deploy:
       replicas: 1
-      update_config:
-        delay: 5s
       restart_policy:
         delay: 10s
-        max_attempts: 10
-        window: 60s
       placement:
         constraints: [node.role == manager]
 volumes:

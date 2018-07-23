@@ -11,6 +11,7 @@ services:
       - /etc/nginx/htpasswd_storage/.htpasswd:/htpasswd_storage/.htpasswd:ro
       - /etc/letsencrypt/live/rezerbit.com/:/etc/letsencrypt/live/rezerbit.com/:ro
       - /etc/letsencrypt/archive/rezerbit.com/:/etc/letsencrypt/archive/rezerbit.com/:ro
+      - registry-data:/var/lib/registry
     networks:
       - nginx-front
 
@@ -22,6 +23,9 @@ services:
       ENV_DOCKER_REGISTRY_PORT: 5000
     networks:
       - nginx-front
+
+volumes:
+  registry-data:
 
 networks:
   nginx-front:
