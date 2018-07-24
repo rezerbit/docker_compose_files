@@ -20,7 +20,7 @@ services:
     restart: always
     environment:
       REGISTRY_URL: http://registry:5000
-      DELETE_IMAGES: true
+      DELETE_IMAGES: 'true'
     networks:
       - nginx-front
 
