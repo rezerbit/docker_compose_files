@@ -8,7 +8,7 @@ services:
       REGISTRY_STORAGE_DELETE_ENABLED: 'true'
     volumes:
       - ./config.yml:/etc/docker/registry/config.yml
-      - /etc/nginx/htpasswd_storage/.htpasswd:/htpasswd_storage/.htpasswd:ro
+      - /etc/nginx/htpasswd_storage/registry/.htpasswd:/htpasswd_storage/.htpasswd:ro
       - /etc/letsencrypt/live/rezerbit.com/:/etc/letsencrypt/live/rezerbit.com/:ro
       - /etc/letsencrypt/archive/rezerbit.com/:/etc/letsencrypt/archive/rezerbit.com/:ro
       - registry-data:/var/lib/registry
@@ -16,8 +16,10 @@ services:
       - nginx-front
 
   registry-ui:
-    image: joxit/docker-registry-ui
+    image: joxit/docker-registry-ui:static
     restart: always
+    depends_on:
+      - registry
     environment:
       REGISTRY_URL: http://registry:5000
       DELETE_IMAGES: 'true'
