@@ -1,0 +1,34 @@
+version: "3"
+
+services:
+  nginx:
+    build: .
+    ports:
+      - 80:80
+      - 443:443
+      - 5000:5000
+    volumes:
+      - /var/log/nginx:/var/log/nginx:rw
+      - /etc/nginx/htpasswd_storage:/etc/nginx/htpasswd_storage:ro
+      - /etc/nginx/ssl:/etc/nginx/ssl:ro
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - /usr/share/nginx/html:/usr/share/nginx/html
+    logging:
+      options:
+        max-size: 4m
+        max-file: 10
+    deploy:
+      replicas: 2
+      update_config:
+        delay: 5s
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints: [node.role == manager]
+# Do not forget to 'docker network create -d overlay nginx-front' before launch,
+# and to add '--network nginx-front' to proxied containers.
+networks:
+  default:
+    external:
+      name: nginx-front
+    driver: overlay
