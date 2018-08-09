@@ -12,6 +12,10 @@ services:
       mode: global
       update_config:
         delay: 5s
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints: [node.role == manager]
 
 volumes:
   cache:
