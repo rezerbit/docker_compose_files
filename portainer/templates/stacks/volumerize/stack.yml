@@ -3,7 +3,6 @@ version: "3"
 services:
   volumerize:
     image: blacklabelops/volumerize
-    container_name: volumerize
     volumes:
       - cache:/volumerize-cache
       - virtsoil_db-data:/source/virtsoil_db-data:ro
@@ -18,5 +17,5 @@ volumes:
   cache:
   virtsoil_db-data:
     external: true
-  virtsoil_db-data:
+  virtsoil_wordpress-data:
     external: true
