@@ -16,7 +16,7 @@ docker exec -ti <volumerize_container> backup
 docker stack rm volumerize
 ```
 
-- ❗️Remove `:ro` options by volumes from `stack.yml`.
+- ❗️Remove `:ro` options by needed volumes from `stack.yml`.
 
 - Deploy stack with variables:
 
