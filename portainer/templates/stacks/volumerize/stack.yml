@@ -7,6 +7,8 @@ services:
       - cache:/volumerize-cache
       - virtsoil_db-data:/source/virtsoil_db-data:ro
       - virtsoil_wordpress-data:/source/virtsoil_wordpress-data:ro
+      - rezerbit_db-data:/source/rezerbit_db-data:ro
+      - rezerbit_wordpress-data:/source/rezerbit_wordpress-data:ro
     env_file: .env
     deploy:
       mode: global
