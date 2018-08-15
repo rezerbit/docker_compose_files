@@ -25,3 +25,7 @@ volumes:
     external: true
   virtsoil_wordpress-data:
     external: true
+  rezerbit_db-data:
+    external: true
+  rezerbit_wordpress-data:
+    external: true
