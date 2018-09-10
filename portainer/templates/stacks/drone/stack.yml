@@ -9,6 +9,9 @@ services:
     volumes:
       - server-data:/var/lib/drone/
     env_file: .env
+    networks:
+      - nginx-front
+      - default
     deploy:
       mode: global
       restart_policy:
@@ -24,6 +27,8 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     env_file: .env
+    networks:
+      - default
     deploy:
       mode: global
       restart_policy:
@@ -33,3 +38,7 @@ services:
 
 volumes:
   server-data:
+
+networks:
+  nginx-front:
+    external: true
