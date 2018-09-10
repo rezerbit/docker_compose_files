@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  server:
+    image: drone/drone
+    ports:
+      - 8000
+      - 9000
+    volumes:
+      - drone-server-data:/var/lib/drone/
+    env_file: .env
+    deploy:
+      mode: global
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints: [node.role == manager]
+
+  agent:
+    image: drone/agent
+    command: agent
+    depends_on:
+      - server
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    env_file: .env
+    deploy:
+      mode: global
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints: [node.role == manager]
+
+volumes:
+  server-data:
