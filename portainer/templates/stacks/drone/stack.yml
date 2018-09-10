@@ -7,7 +7,7 @@ services:
       - 8000
       - 9000
     volumes:
-      - drone-server-data:/var/lib/drone/
+      - server-data:/var/lib/drone/
     env_file: .env
     deploy:
       mode: global
